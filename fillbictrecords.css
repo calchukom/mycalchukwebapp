@@ -1,0 +1,55 @@
+body{
+    background-color: rgb(12, 156, 175);
+    color: white;
+    background-image: image('');
+    animation-name: colorchanger;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+}
+.bictform{
+    background-color: #563542;
+    width: 600px;
+    margin-left: 33%;    
+    margin-top:20px;
+    margin-bottom: 100px;
+    border-radius: 30px;
+}
+.inptxt{
+    align-items: center;
+    margin-left: 150px;
+}
+.bictformi{
+    padding: 20px;
+    
+}
+.btnsubmit{
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    background-color:rgb(221, 22, 55);
+    margin-left: 188px;
+    color:white; 
+    cursor: pointer;
+}
+.btnreset{
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    background-color:rgb(12, 223, 23);
+    margin-left: 100px;
+    color:white; 
+    cursor: pointer;
+}
+h1{
+    font-size: 50px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+@keyframes colorchanger {
+    0% {background-color: #23a1db;}
+    20% {background-color: #6b27da;}
+    40% {background-color: #a22ada;}
+    60% {background-color: #e014d6;}
+    80% {background-color: #2e31d8;}
+    100% {background-color: #58c916;}
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BICTRECORDS</title>
+    <link rel="stylesheet" href="fillbictrecords.css">
+</head>
+<body>
+    <div>
+        <h1>Hi everyone, feel free to enter details by: Caleb, BICT CLASS REP, Laikipia University</h1>
+    </div>
+    <br><br>
+    <div>
+        <fieldset class="bictform">
+            <h2>ENTER REQUIRED DETAILS</h2>
+            <form action="" class="bictformi">
+                <label for="reg_no">REGISTRATION NUMBER</label><br>
+                <input type="text" placeholder="SC/ICT/0000/23" class="inptxt" id="reg_no" required><br><br>
+                <label for="email">EMAIL</label><br>
+                <input type="email" placeholder="student@gmail.com" class="inptxt" id="email" required><br><br>
+                <label for="f_name">FIRST NAME</label><br>
+                <input type="text" placeholder="First Name" class="inptxt" id="f_name" required><br><br>
+                <label for="l_name">LAST NAME</label><br>
+                <input type="text" placeholder="Last Name" class="inptxt" id="l_name" required><br><br>
+                <button type="button" class="btnsubmit" id="submit">SUBMIT</button>
+                <button type="reset" class="btnreset" value="reset">RESET</button>
+            </form>  
+        </fieldset>
+    </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBMbHfNzADfEVjSpMpoFOSjGSaFvkcOCXE",
+            authDomain: "calchukrecords.firebaseapp.com",
+            databaseURL: "https://calchukrecords-default-rtdb.firebaseio.com/",
+            projectId: "calchukrecords",
+            storageBucket: "calchukrecords.appspot.com",
+            messagingSenderId: "959074730044",
+            appId: "1:959074730044:web:b2d51105466bcee6af8339"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        document.getElementById("submit").addEventListener('click', function(e) {
+            e.preventDefault();
+            const regNo = encodeURIComponent(document.getElementById("reg_no").value);
+
+            set(ref(db, 'students/' + regNo), {
+                reg_no: regNo,
+                email: document.getElementById("email").value,
+                f_name: document.getElementById("f_name").value,
+                l_name: document.getElementById("l_name").value
+            }).then(() => {
+                alert("Submitted successfully to Caleb Ogeto. Thanks.");
+            }).catch((error) => {
+                console.error("Error writing to database: ", error);
+            });
+        });
+    </script>
+</body>
+</html>
